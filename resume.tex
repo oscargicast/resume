@@ -1,128 +1,194 @@
-\documentclass[a4paper, oneside, final]{scrartcl} % Paper options using the scrartcl class
+\documentclass[11pt,a4paper,sans]{moderncv}
 
-\usepackage{scrpage2} % Provides headers and footers configuration
-\usepackage{titlesec} % Allows creating custom \section's
-\usepackage{marvosym} % Allows the use of symbols
-\usepackage{tabularx,colortbl} % Advanced table configurations
+%% ModernCV themes
+\moderncvstyle{casual}
+\moderncvcolor{blue}
+\renewcommand{\familydefault}{\sfdefault}
+\nopagenumbers{}
 
-\usepackage{fontspec} % Allows font customization
-\usepackage{times}          % Usar tipo Times-Roman
-\usepackage[T1]{fontenc}    % Usar la codificaci�n T1
+%% Character encoding
+\usepackage[utf8]{inputenc}
 
-\usepackage[spanish]{babel} 
-\selectlanguage{spanish} 
-\usepackage[utf8]{inputenc} 
+%% Adjust the page margins
+\usepackage[scale=0.75]{geometry}
 
-%\defaultfontfeatures{Mapping=tex-text}
-%\setmainfont{Adobe Garamond Pro} % Main document font
-
-\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule] % Section formatting
-
-\pagestyle{scrheadings} % Print the headers and footers on all pages
-
-\addtolength{\voffset}{-0.5in} % Adjust the vertical offset - less whitespace at the top of the page
-\addtolength{\textheight}{3cm} % Adjust the text height - less whitespace at the bottom of the page
-
-\newcommand{\gray}{\rowcolor[gray]{.90}} % Custom highlighting for the work experience and education sections
-
-%----------------------------------------------------------------------------------------
-% �FOOTER SECTION
-%----------------------------------------------------------------------------------------
-
-\renewcommand{\headfont}{\normalfont\rmfamily\scshape} % Font settings for footer
-
-\cofoot{
-\addfontfeature{LetterSpace=20.0}\fontsize{12.5}{17}\selectfont % Letter spacing and font size
-
-Av. Brasil 805 {\large\textperiodcentered} Lima {\large\textperiodcentered} Per� \\ % Your mailing address
-{\Large\Letter} john@smith.com \ {\Large\Telefon} (000) 111-1111 % Your email address and phone number
-}
-
-%----------------------------------------------------------------------------------------
+%% Personal data
+\firstname{Oscar}
+\familyname{Giraldo Castillo}
+\title{Egresado Ing. Mecatrónica}
+\address{Av. Brasil 805 Dpto. 401}{Jesús María}
+\mobile{989732510}
+\phone{4248393}
+%\fax{+3~(456)~789~012}
+\email{oscar.gi.cast@gmail.com}
+\homepage{robotstudio.wikidot.com}
+\extrainfo{http://www.linkedin.com/in/oscargicast}
+%\photo[64pt][0.4pt]{picture}
+\quote{“Education is the most powerful weapon which you can use to change the world”}
 
 
+%%------------------------------------------------------------------------------
+%% Content
+%%------------------------------------------------------------------------------
 \begin{document}
+\makecvtitle
 
-\begin{center} % Center everything in the document
 
-%----------------------------------------------------------------------------------------
-% �HEADER SECTION
-%----------------------------------------------------------------------------------------
 
-{\addfontfeature{LetterSpace=20.0}\fontsize{36}{36}\selectfont\scshape \'O �scar Giraldo} % Your name at the top
+\section{Educación}
+%% Base
+%\cventry{year--year}{Degree}{Institution}{City}{ \textit{Grade} }{Description}  % arguments 3 to 6 can be left empty
+%\cvitem{title}{ \emph{Title} }
+%\cvitemwithcomment{Language 1}{Skill level}{Comment}
+%\cvdoubleitem{category X}{XXX, YYY, ZZZ}{category Y}{XXX, YYY, ZZZ}
+%\cvlistitem{Item 1}
+%\cvlistdoubleitem{Item 2}{Item 3}
 
-\vspace{1.5cm} % Extra whitespace after the large name at the top
+\cventry{2008--2013}{Ing. Mecatrónica}{Universidad Nacional de Ingeniería}{Lima}{}
+{Dentro del tercio superior} 
 
-%----------------------------------------------------------------------------------------
-%	OBJECTIVE
-%----------------------------------------------------------------------------------------
+\cventry{2007--2008}{Ing. Mecatrónica}{Universidad Tecnológica del Perú}{Lima}{}
+{}
 
-\section{Objective}
 
-A position in the field of computers with special interests in business applications \\ programming, information processing, and management systems.
-
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE
-%----------------------------------------------------------------------------------------
-
-\section{Work Experience}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Period & \textbf{March 2012 --- Present}\\
-\gray Employer & \textbf{Layer BV} \hfill Amsterdam, The Netherlands\\
-\gray Job Title & \textbf{J2EE Analyst programmer}\\
-\gray Languages & \textbf{J2EE}\\
-� � � �& Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et auctor neque. Nullam ultricies sem sit amet magna tristique imperdiet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eget mollis nunc.
-\end{tabularx}
-
-\vspace{12pt}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Period & \textbf{March 2009 --- August 2010 (Part Time)}\\
-\gray Employer & \textbf{Buy More} \hfill New York, USA\\
-\gray Job Title & \textbf{Supermarket Clerk}\\
-� � � �& Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et auctor neque. Nullam ultricies sem sit amet magna tristique imperdiet.
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-
-\section{Education}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Period & \textbf{January 2011 --- February 2012}\\
-\gray Degree & \textbf{Master of Science in Computer Science}\\
-\gray Rank & \textbf{First Class Honours}\\
-\gray University & \textbf{The University of California} \hfill Los Angeles, USA\\
-%& Extra information about degree
-\end{tabularx}
-
-\vspace{12pt}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Period & \textbf{August 2008 --- September 2010}\\
-\gray Degree & \textbf{Bachelor of Science in Computer Science}\\
-\gray Rank & \textbf{With Distinction}\\
-\gray University & \textbf{New York University} \hfill New York, USA\\
-%& Extra information about degree
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
 
 \section{Skills}
+\cventry{}{Sistemas Operativos}{}{}{}
+{} 
+\cvlistdoubleitem{Unix}{Windows}
 
-\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-Computer Languages & Prolog, Haskell, AWK, Erlang, Scheme, ML \\
-Protocols \& APIs & XML, JSON, SOAP, REST \\
-Databases & MySQL, PostgreSQL, Microsoft SQL \\
-Tools & SVN, Vim, Emacs
-\end{tabular}
+\cventry{}{Lenguajes de programación}{}{}{}
+{} 
+\cvlistdoubleitem{Python}{Java/ Android SDK}
+\cvlistdoubleitem{C/C++/C\#}{Basic}
 
-%----------------------------------------------------------------------------------------
+\cventry{}{Programación de controladores}{}{}{}
+{} 
+\cvlistdoubleitem{Lenguajes: ASM/C/Python}{}
+\cvlistdoubleitem{Arduino}{Raspberry Pi}
+\cvlistdoubleitem{BeagleBone}{uC PIC}
 
-\end{center}
+\cventry{}{Diseño Electrónico}{}{}{}
+{} 
+\cvlistdoubleitem{Proteus}{Eagle}
+\cvlistdoubleitem{Circuit Maker}{Pspice}
 
+\cventry{}{Software Scientigico}{}{}{}
+{} 
+\cvlistdoubleitem{Matlab}{Labview}
+\cvlistdoubleitem{Octave}{Maple}
+
+\cventry{}{Procesadores de Texto y Editores}{}{}{}
+{} 
+\cvlistdoubleitem{\LaTeX}{MS Office}
+\cvlistdoubleitem{Sublime Text}{nano}
+\cvlistdoubleitem{gedit}{vim}
+
+
+\cventry{}{Desarrollo Web}{FrontEnd}{}{}
+{} 
+\cvlistdoubleitem{html/css/js}{}
+\cvlistdoubleitem{AngularJS}{jQuery}
+
+\cventry{}{Desarrollo Web}{BackEnd}{}{}
+{} 
+\cvlistdoubleitem{MySql}{SQLite}
+\cvlistdoubleitem{MongoDB}{PostgreSQL}
+
+\cventry{}{Desarrollo Web}{Python Frameworks}{}{}
+{} 
+\cvlistdoubleitem{Google App Engine/webapp2}{bottle}
+\cvlistdoubleitem{django}{CherryPy}
+
+
+
+
+\section{Certificaciones}
+\cventry{2013}{Introduction to Computer Science}{UDACITY}{With Proficiency}{}
+{} 
+
+\cventry{2012}{Web Development}{UDACITY}{With Proficiency}{}
+{}  
+
+\cventry{2012}{MongoDB for Developers}{MongoDB University}{With Proficiency}{}
+{}  
+
+
+
+\section{Experiencia Laboral}
+\cventry{2012--2013}{Research Intern}{Centro de Tecnologías de Información y Comunicaciones}{Lima}{}
+{} 
+
+\cventry{2011}{Participación en trabajos de mantenimiento en la planta de Antamina}{JAVFRANK}{Lima}{}
+{}  
+
+
+
+\section{Proyectos}
+\cventry{Agosto 2013}{dgNest}{}{}{}
+{Implementación de plataforma web que permite enviar diseños electrónicos PCBs.}  
+
+\cventry{2013}{Lima Guide}{}{}{}
+{Aplicación que te brinda una guía de los números de emergencia de Lima tales como serenazgo, policía, bomberos, entre otros.
+Además podrás encontrar los números telefónicos, dirección, página web, e-mail, etc. de algunas entidades públicas del estado tales como los ministerios, defensorías, SUNAT, RENIEC, y más.
+Con la nueva Actualización hemos integrado más entidades, tales como SEDAPAL, Luz del Sur, Claro, Movistar, etc.
+No dejes de tener esta importante aplicación en tu móvil, que seguiremos agregando más novedades.}  
+
+\cventry{2013}{tasteBit}{}{}{}
+{TasteBit es una deliciosa y entretenida aplicación que te guiará a través de una ruta con mucho sabor. 
+TasteBit te ayuda  a probar las mejores cosas de la vida en tan solo un toque. 
+Conviértete en un taster y contribuye en la mejora de nuestra cultura gastronómica recorriendo el Perú.
+Taste it with TasteBit.
+Version Beta.}  
+
+\cventry{2013}{New Sense}{}{}{}
+{Diseño e Implementación de una Interfaz que Permita la Identificación de Patrones del Movimiento de un Brazo a Partir de Información de los Sensores de un Dispositivo Móvil Android (Spanish)}  
+
+\cventry{Agosto 2012}{Localización De Un Robot Móvil De Configuración Ackerman Usando El Filtro Extendido De Kalman}{}{}{}
+{Este proyecto tiene como objetivo principal el promover el consumo de pisco y estandarizar su preparación con el propósito de difundirlo en el extranjero.}  
+
+\cventry{Septiembre 2011}{Máquina dispensadora de Pisco Sour Vending Machine}{}{}{}
+{Diseño e Implementación de una Interfaz que Permita la Identificación de Patrones del Movimiento de un Brazo a Partir de Información de los Sensores de un Dispositivo Móvil Android (Spanish)}  
+
+
+
+\section{Organizaciones}
+\cventry{Octubre 2013}{PYTHON UNI}{}{}{}
+{Creación de la comunidad de python de la UNI.}  
+
+\cventry{Agosto 2010}{GISCIA - UNI}{}{}{}
+{Former Vice President.}  
+
+\cventry{2009}{CEDIM - UNI}{}{}{}
+{Miembro activo.}  
+
+\cventry{Diciembre 2007}{IEEE}{}{}{}
+{Miembro activo.}  
+
+
+
+\section{Honores y Premios}
+\cventry{Noviembre 2012}{5ta Edición Olimpiadas académicas de Mecatrónica}{FESTO}{INTERCON 2011}{Finalista}
+{Pruebas de neumática, electroneumática y PLC.}  
+
+\cventry{Agosto 2011}{4ta Edición Olimpiadas académicas de Mecatrónica}{FESTO}{INTERCON 2011}{Segundo Lugar}
+{Pruebas de neumática, electroneumática y PLC.}  
+
+\cventry{2008}{Diploma al Mérito académico}{Universidad Tecnológica del Perú}{}{}
+{}  
+
+\cventry{2006}{Mención Honrosa - Beca otorgada por Universidad César Vallejo}{Lima}{}{}
+{}  
+
+
+
+\section{Idiomas}
+\cvitemwithcomment{Español}{Competencia bilingüe o nativa}{}
+
+\cvitemwithcomment{Ingles}{Competencia profesional completa}{ICPNA}
+
+
+
+%% ...
+%\bibliography{publications}
 \end{document}
