@@ -1,203 +1,42 @@
 \documentclass[11pt,a4paper,sans]{moderncv}
 
-%% ModernCV themes
+%% ModernCV themes.
 \moderncvstyle{casual}
 \moderncvcolor{blue}
 \renewcommand{\familydefault}{\sfdefault}
 \nopagenumbers{}
 
-%% Character encoding
+%% Character encoding.
 \usepackage[utf8]{inputenc}
 
-%% Adjust the page margins
+%% Adjust the page margins.
 \usepackage[scale=0.75]{geometry}
 
-%% Personal data
+%% Personal data.
 \firstname{Oscar}
 \familyname{Giraldo Castillo}
-\title{Egresado Ing. Mecatrónica}
-\address{Av. Brasil 805 Dpto. 401}{Jesús María}
-\mobile{984287311}
-\phone{4335920}
-%\fax{+3~(456)~789~012}
-\email{oscar@dgnest.com/oscar.gi.cast@gmail.com}
-\homepage{robotstudio.wikidot.com}
+\title{Mechatronics Engineering Graduate}
+\address{Av. Brasil 805 Dpto. 401}{Jesús María, Lima, Perú}
+\mobile{011 51 989 732 510}
+\phone{011 51 1 433 5920}
+\email{oscar@dgnest.com / oscar.gi.cast@gmail.com}
+\homepage{dgnest.com/oskargicast}
 \extrainfo{http://www.linkedin.com/in/oscargicast}
-%\photo[64pt][0.4pt]{picture}
+\photo[72pt][0.4pt]{picture.jpg}
 \quote{“Education is the most powerful weapon which you can use to change the world”}
 
-
-%%------------------------------------------------------------------------------
-%% Content
-%%------------------------------------------------------------------------------
 \begin{document}
 \makecvtitle
 
+\input{./education.tex}
+\input{./skills.tex}
+\input{./certifications.tex}
+\input{./experience.tex}
+\input{./volunteer-experience.tex}
+\input{./projects.tex}
+\input{./organizations.tex}
+\input{./courses.tex}
+\input{./honors-awards.tex}
+\input{./languages.tex}
 
-
-\section{Educación}
-%% Base
-%\cventry{year--year}{Degree}{Institution}{City}{ \textit{Grade} }{Description}  % arguments 3 to 6 can be left empty
-%\cvitem{title}{ \emph{Title} }
-%\cvitemwithcomment{Language 1}{Skill level}{Comment}
-%\cvdoubleitem{category X}{XXX, YYY, ZZZ}{category Y}{XXX, YYY, ZZZ}
-%\cvlistitem{Item 1}
-%\cvlistdoubleitem{Item 2}{Item 3}
-
-\cventry{2008--2013}{Ing. Mecatrónica}{Universidad Nacional de Ingeniería}{Lima}{}
-{Dentro del tercio superior} 
-
-\cventry{2007--2008}{Ing. Mecatrónica}{Universidad Tecnológica del Perú}{Lima}{}
-{}
-
-
-
-\section{Skills}
-\cventry{}{Sistemas Operativos}{}{}{}
-{} 
-\cvlistdoubleitem{Unix}{Windows}
-
-\cventry{}{Lenguajes de programación}{}{}{}
-{} 
-\cvlistdoubleitem{Python}{Java/ Android SDK}
-\cvlistdoubleitem{C/C++/C\#}{Basic}
-
-\cventry{}{Programación de controladores}{}{}{}
-{} 
-\cvlistdoubleitem{Lenguajes: ASM/C/Python}{}
-\cvlistdoubleitem{Arduino}{Raspberry Pi}
-\cvlistdoubleitem{BeagleBone}{uC PIC}
-
-\cventry{}{Diseño Electrónico}{}{}{}
-{} 
-\cvlistdoubleitem{Proteus}{Eagle}
-\cvlistdoubleitem{Circuit Maker}{Pspice}
-
-\cventry{}{Software Scientífico}{}{}{}
-{} 
-\cvlistdoubleitem{Matlab}{Labview}
-\cvlistdoubleitem{Octave}{Maple}
-
-\cventry{}{Procesadores de Texto y Editores}{}{}{}
-{} 
-\cvlistdoubleitem{\LaTeX}{MS Office}
-\cvlistdoubleitem{Sublime Text}{nano}
-\cvlistdoubleitem{gedit}{vim}
-
-
-\cventry{}{Desarrollo Web}{FrontEnd}{}{}
-{} 
-\cvlistdoubleitem{html/css/js}{}
-\cvlistdoubleitem{AngularJS}{jQuery}
-
-\cventry{}{Desarrollo Web}{BackEnd}{}{}
-{} 
-\cvlistdoubleitem{MySql}{SQLite}
-\cvlistdoubleitem{MongoDB}{PostgreSQL}
-\cvlistdoubleitem{Configuración de Servidores Linux}{}
-
-\cventry{}{Desarrollo Web}{Python Frameworks}{}{}
-{}
-\cvlistdoubleitem{Google App Engine/webapp2}{Bottle}
-\cvlistdoubleitem{Django}{CherryPy}
-
-
-
-\section{Certificaciones}
-\cventry{2013}{Introduction to Computer Science}{UDACITY}{With Proficiency}{}
-{} 
-
-\cventry{2012}{Web Development}{UDACITY}{With Proficiency}{}
-{}  
-
-\cventry{2012}{MongoDB for Developers}{MongoDB University}{With Proficiency}{}
-{}  
-
-
-
-\section{Experiencia Laboral}
-\cventry{2013--2014}{CEO/Founder}{dgnest}{Lima}{Empresa que surgio de el startup dgnest.com. Brindamos asesoría e implementación en proyectos web/mobile con integración de hardware}
-{} 
-
-\cventry{2012--2013}{Research Intern}{Centro de Tecnologías de Información y Comunicaciones}{Lima}{}
-{} 
-
-\cventry{2011}{Participación en trabajos de mantenimiento en la planta de Antamina}{JAVFRANK}{Lima}{}
-{}  
-
-
-
-\section{Proyectos}
-\cventry{2014}{allillanchu}{}{}{}
-{Trabajo conjunto con CRONICAS-Universidad Cayetano Heredia en desarrollo de un app orientada al control de la salud mental.}  
-
-\cventry{Agosto 2013}{dgnest}{}{}{}
-{Implementación de plataforma web para compartir proyectos open source hardware. Se encuentra disponible en \emph{dgnest.com}}  
-
-\cventry{2013}{Lima Guide}{}{}{}
-{Aplicación que te brinda una guía de los números de emergencia de Lima tales como serenazgo, policía, bomberos, entre otros.
-Además podrás encontrar los números telefónicos, dirección, página web, e-mail, etc. de algunas entidades públicas del estado tales como los ministerios, defensorías, SUNAT, RENIEC, y más.
-Con la nueva Actualización hemos integrado más entidades, tales como SEDAPAL, Luz del Sur, Claro, Movistar, etc.
-No dejes de tener esta importante aplicación en tu móvil, que seguiremos agregando más novedades.}  
-
-\cventry{2013}{tasteBit}{}{}{}
-{TasteBit es una deliciosa y entretenida aplicación que te guiará a través de una ruta con mucho sabor. 
-TasteBit te ayuda  a probar las mejores cosas de la vida en tan solo un toque. 
-Conviértete en un taster y contribuye en la mejora de nuestra cultura gastronómica recorriendo el Perú.
-Taste it with TasteBit.
-Version Beta.}  
-
-\cventry{2013}{New Sense}{}{}{}
-{Diseño e Implementación de una Interfaz que Permita la Identificación de Patrones del Movimiento de un Brazo a Partir de Información de los Sensores de un Dispositivo Móvil Android (Spanish)}  
-
-\cventry{Agosto 2012}{Localización De Un Robot Móvil De Configuración Ackerman Usando El Filtro Extendido De Kalman}{}{}{}
-{Este proyecto tiene como objetivo principal el promover el consumo de pisco y estandarizar su preparación con el propósito de difundirlo en el extranjero.}  
-
-\cventry{Septiembre 2011}{Máquina dispensadora de Pisco Sour Vending Machine}{}{}{}
-{Diseño e Implementación de una Interfaz que Permita la Identificación de Patrones del Movimiento de un Brazo a Partir de Información de los Sensores de un Dispositivo Móvil Android (Spanish)}  
-
-
-
-\section{Organizaciones}
-\cventry{Octubre 2013}{PYTHON UNI}{}{}{}
-{Creación de la comunidad de python de la UNI.}  
-
-\cventry{Agosto 2010}{GISCIA - UNI}{}{}{}
-{Former Vice President.}  
-
-\cventry{2009}{CEDIM - UNI}{}{}{}
-{Miembro activo.}  
-
-\cventry{Diciembre 2007}{IEEE}{}{}{}
-{Miembro activo.}  
-
-
-
-\section{Honores y Premios}
-\cventry{Abril 2014}{Ganador de un grant para asistir al PyCon}{Pycon}{Montreal 2014}{}
-{Grant valorizado en 550 dólares americanos.}
-
-\cventry{Noviembre 2012}{5ta Edición Olimpiadas académicas de Mecatrónica}{FESTO}{INTERCON 2011}{Finalista}
-{Pruebas de neumática, electroneumática y PLC.}  
-
-\cventry{Agosto 2011}{4ta Edición Olimpiadas académicas de Mecatrónica}{FESTO}{INTERCON 2011}{Segundo Lugar}
-{Pruebas de neumática, electroneumática y PLC.}  
-
-\cventry{2008}{Diploma al Mérito académico}{Universidad Tecnológica del Perú}{}{}
-{}  
-
-\cventry{2006}{Mención Honrosa - Beca otorgada por Universidad César Vallejo}{Lima}{}{}
-{}  
-
-
-
-\section{Idiomas}
-\cvitemwithcomment{Español}{Competencia bilingüe o nativa}{}
-
-\cvitemwithcomment{Ingles}{Competencia profesional completa}{ICPNA}
-
-
-
-%% ...
-%\bibliography{publications}
 \end{document}
