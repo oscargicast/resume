@@ -1,2 +1,4 @@
-Useful Latex Template for Make a Resume
+Useful Latex Template to Make a Resume
 =======================================
+
+Main file: resume.tex
