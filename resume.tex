@@ -41,6 +41,11 @@
 
 \usepackage{tabularx}
 
+%% Decorative-only icons for the header. Visible URL text accompanies each
+%% icon, so ATS still parses identifiers — icons are visual sugar, never the
+%% sole label.
+\usepackage{fontawesome5}
+
 %% hyperref LAST, with metadata some ATS and recruiters read.
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
@@ -63,7 +68,7 @@
 %% \cvHonor{t}{d}    — colored title + detail, for honors/certifications items.
 \newcommand{\cvHeading}[1]{\textbf{\textcolor{titleMid}{#1}}}
 \newcommand{\cvNote}[1]{\noindent #1\par\vspace{2pt}}
-\newcommand{\cvHonor}[2]{\cvHeading{#1} -- #2}
+\newcommand{\cvHonor}[2]{\cvHeading{#1:} #2}
 
 %% \cvEntry{Title}{Dates}{Org}{Location}
 \newcommand{\cvEntry}[4]{%
@@ -71,10 +76,12 @@
   \textit{#3}\hfill \textit{#4}\par\vspace{2pt}%
 }
 
-%% \cvProject{Name}{Stack}{URL}
+%% \cvProject{Name}{Stack}{URL without scheme, e.g. "github.com/foo/bar"}
+%% Empty third arg = no URL. Visible text stays short (no https://); the
+%% clickable target gets https:// prepended.
 \newcommand{\cvProject}[3]{%
   \noindent\cvHeading{#1} \textbar\ \textit{#2}%
-  \ifx&#3&\else\hfill\href{#3}{#3}\fi
+  \ifx&#3&\else\hfill\href{https://#3}{#3}\fi
   \par\vspace{2pt}%
 }
 
@@ -89,12 +96,13 @@
 \begin{center}
   {\Huge\bfseries\color{titleStrong} Oscar Giraldo Castillo}\\[2pt]
   {\large Senior Full-Stack Engineer}\\[4pt]
-  Lima, Perú (remote) \textbar\
-  \href{mailto:oscar.gi.cast@gmail.com}{oscar.gi.cast@gmail.com} \textbar\
-  +51 907 898 162 \\
-  \href{https://linkedin.com/in/oscargicast}{linkedin.com/in/oscargicast} \textbar\
-  \href{https://github.com/oscargicast}{github.com/oscargicast} \textbar\
-  \href{https://oscargicast.com}{oscargicast.com}
+  {\footnotesize\faMapMarker*}\ Lima, Perú (remote) \textbar\
+  {\footnotesize\faEnvelope}\ \href{mailto:oscar.gi.cast@gmail.com}{oscar.gi.cast@gmail.com} \textbar\
+  {\footnotesize\faPhone*}\ +51 907 898 162 \\
+  {\footnotesize\faLinkedin}\ \href{https://linkedin.com/in/oscargicast}{linkedin.com/in/oscargicast} \textbar\
+  {\footnotesize\faGithub}\ \href{https://github.com/oscargicast}{github.com/oscargicast} \\
+  {\footnotesize\faGlobe}\ \href{https://oscargicast.com}{oscargicast.com} \textbar\
+  {\footnotesize\faYoutube}\ \href{https://www.youtube.com/@devosqui}{youtube.com/@devosqui}
 \end{center}
 
 \input{./sections/summary.tex}

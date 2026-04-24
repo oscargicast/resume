@@ -15,8 +15,7 @@ CLAUDE.md is a short pointer — the skill is the full spec.
 
 Single-column, ATS-proof LaTeX resume built on the `article` class with
 [Jake Gutierrez's template](https://github.com/jakegut/resume) conventions.
-Owner/subject: Oscar Giraldo Castillo. The long-form research behind the
-setup is in [`ast-best-practices-resume.md`](ast-best-practices-resume.md).
+Owner/subject: Oscar Giraldo Castillo.
 
 ## Build
 
@@ -45,7 +44,6 @@ sections/*.tex                      # section fragments (no preamble, not standa
 assets/picture.jpg                  # unreferenced; no \photo is used anymore
 resume.pdf                          # committed build output (README links it)
 Makefile                            # build targets
-ast-best-practices-resume.md        # research doc behind the ATS-proof setup
 .claude/skills/ats-resume/SKILL.md  # authoritative editing guide
 ```
 

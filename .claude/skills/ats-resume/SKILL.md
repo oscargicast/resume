@@ -16,9 +16,6 @@ Authoritative guide for editing the resume in **this** repo
 generic ATS-proof LaTeX rules with the repo's build system and canonical
 data. When this skill and `CLAUDE.md` disagree, this skill wins.
 
-Reference source for the ATS research is
-[`ast-best-practices-resume.md`](../../../ast-best-practices-resume.md).
-
 ## The one-line ATS fix nobody explains
 
 Every pdfLaTeX resume **must** include these two lines in its preamble:
@@ -112,8 +109,8 @@ section files directly:
 % Free-text line under a \cvEntry (activities, coursework, narrative).
 \newcommand{\cvNote}[1]{\noindent #1\par\vspace{2pt}}
 
-% Honor / certification line: colored title + detail.
-\newcommand{\cvHonor}[2]{\cvHeading{#1} -- #2}
+% Honor / certification line: colored label + detail (label:value style).
+\newcommand{\cvHonor}[2]{\cvHeading{#1:} #2}
 ```
 
 **Content macros** (3) — each consumes `\cvHeading` internally for its
@@ -147,14 +144,31 @@ Usage cheatsheet for section files:
 | Entry with a single prose line       | `\cvEntry` + `\cvNote` |
 | Side project / portfolio item        | `\cvProject` + `itemize` |
 | Skills category line                 | `\cvSkill` |
-| Honor / award / certification item   | `\item \cvHonor{title}{detail}` |
-| Cert without trailing detail         | `\item \cvHeading{title}` |
+| Honor / award (label:value)          | `\item \cvHonor{award}{detail}` → renders `Award: detail` |
+| Certification item (title, issuer)   | `\item \cvHeading{title}, issuer (Mon YYYY). \href{...}{url}` |
+| Publication                          | `\item \cvHeading{title}. \textit{journal} (Mon YYYY), DOI ...` |
 | Inline label:value (e.g. Languages)  | `\cvHeading{Label:} value` |
+
+**Separator convention (no em-dash / en-dash between clauses).** AI text
+is easy to spot because of `—` or `--` used as sentence-break separator.
+In this resume the rule is:
+
+- **Title + issuer** (certifications, publications) → comma for
+  apposition, period between independent clauses. Never `--`.
+- **Label: value** (languages, honors, skills category, inline section
+  labels) → colon inside `\cvHeading{Label:}` so the colon inherits the
+  heading color.
+- **Date ranges** in `\cvEntry` → single hyphen `-` (e.g.
+  `Oct 2024 - Present`, `2008 - 2013`). Do not use `--` (en-dash)
+  despite typographic convention — stay consistent with the rest of
+  the document.
+- **Mid-sentence "X – Y" inside bullets** → replace with `: ` when it
+  is topic:elaboration, or with a comma for appositives. Never `--`.
 
 Real usage from the repo:
 
 ```latex
-\cvEntry{Python Backend Engineer}{Oct 2021 -- Jan 2023}{SpaceAG Global}{Lima, Perú}
+\cvEntry{Python Backend Engineer}{Oct 2021 - Jan 2023}{SpaceAG Global}{Lima, Perú}
 \begin{itemize}
   \item Implemented a multi-tenant reporting module syncing AWS RDS with AWS
         Athena via EventBridge, Celery, and Pandas, producing Parquet files
@@ -363,13 +377,13 @@ Canonical patterns:
 
 ```latex
 %% Credly badges (AWS, Microsoft, Cisco, etc.)
-\item \cvHeading{AWS Certified Cloud Practitioner} -- Amazon Web Services. \href{https://www.credly.com/badges/<uuid>/linked_in_profile}{credly.com/badges/<uuid>}
+\item \cvHeading{AWS Certified Cloud Practitioner}, Amazon Web Services (Mon YYYY). \href{https://www.credly.com/badges/<uuid>/linked_in_profile}{credly.com/badges/<uuid>}
 
 %% Coursera accomplishments
-\item \cvHeading{<Course Title>} -- <Issuer> (<Month Year>). \href{https://www.coursera.org/account/accomplishments/verify/<CODE>}{coursera.org/verify/<CODE>}
+\item \cvHeading{<Course Title>}, <Issuer> (<Mon YYYY>). \href{https://www.coursera.org/account/accomplishments/verify/<CODE>}{coursera.org/verify/<CODE>}
 
 %% Non-URL cert (official diploma, no public verification)
-\item \cvHeading{<Cert Name>} -- <Issuer> (<Date>) --- <relevant metrics, e.g. 120 hours, grade 19/20>.
+\item \cvHeading{<Cert Name>}, <Issuer> (<Mon YYYY>), <relevant metrics, e.g. 120 hours, grade 19/20>.
 ```
 
 Notes:
