@@ -2,10 +2,11 @@
 
 \cvEntry{Senior Fullstack Developer}{Oct 2024 - Present}{Cometa}{Remote (Ciudad de México, México)}
 \begin{itemize}
-  \item Member of Cometa's \textbf{finance engineering team}. Own payins, payouts, and billing / invoicing flows end-to-end across a Django modular monolith and Next.js frontend.
+  \item Member of Cometa's \textbf{finance engineering team}. Own payins, payouts, and billing / invoicing flows end-to-end across a polyglot stack: Django modular monolith, FastAPI services, a Go payments microservice, and a Next.js frontend.
   \item Built \textbf{Argus}, a Rust read-only Redshift proxy (Axum, lambda\_http on AWS Lambda + API Gateway) powering the Guardian Credit Scoring flow: whitelisted tables, identity-based row filtering, pagination, and thread-safe credential refresh.
   \item Delivered the billing + inventory domain: cart payment lifecycle state machine, batch-only inventory reservation pipeline, cart-expiration via cross-module outbox events, Gandalf-authenticated endpoints, and Postgres indexes on hot paths.
   \item Shipped Guardian Stripe checkout end-to-end (PaymentIntent, per-currency minimum-amount drawer, locale-aware errors, a11y) across Django backend and Next.js frontend.
+  \item Shipped \textbf{Go} features in Cometa's payments microservice brokering transactions across multiple payment gateways with per-school processor routing and SQS event schemas for downstream domain updates.
   \item Built MCP servers exposing Cometa's domain APIs as LLM-callable tools; shipped full-stack features on a Django modular monolith + Next.js (Clean Architecture, DDD) with on-call triage, Alembic migrations, and report-query tuning.
 \end{itemize}
 

@@ -35,9 +35,10 @@ belt-and-suspenders.
 
 ## Canonical preamble (as used by `resume.tex` today)
 
-This is the preamble the repo actually ships — margins and spacing already
-tuned for a 2-page senior resume. Do not revert to the 0.65in / 10pt/4pt
-defaults from the reference doc without re-verifying page count.
+This is the preamble the repo actually ships — margins and spacing are
+tuned for a 2–3 page senior resume (see *Density tuning* below). Do not
+loosen them toward `0.65in / 10pt/4pt` defaults without re-verifying
+page count.
 
 ```latex
 \documentclass[11pt,letterpaper]{article}
@@ -73,6 +74,11 @@ defaults from the reference doc without re-verifying page count.
 \setcounter{secnumdepth}{0}
 
 \usepackage{tabularx}
+
+%% Decorative icons for the contact header. ATS-safe ONLY because every
+%% icon in the header sits next to visible URL/email/phone text — the
+%% icons are sugar, never the identifier itself.
+\usepackage{fontawesome5}
 
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
@@ -123,10 +129,12 @@ title, so the whole hierarchy shares one color source:
   \textit{#3}\hfill \textit{#4}\par\vspace{2pt}%
 }
 
-% \cvProject{Name}{Stack}{URL}
+% \cvProject{Name}{Stack}{URL without scheme, e.g. "github.com/foo/bar"}
+% Empty third arg = no URL. The macro prepends https:// to the href
+% target, keeping the visible text short (and obeying the URL rule below).
 \newcommand{\cvProject}[3]{%
   \noindent\cvHeading{#1} \textbar\ \textit{#2}%
-  \ifx&#3&\else\hfill\href{#3}{#3}\fi
+  \ifx&#3&\else\hfill\href{https://#3}{#3}\fi
   \par\vspace{2pt}%
 }
 
@@ -146,8 +154,14 @@ Usage cheatsheet for section files:
 | Skills category line                 | `\cvSkill` |
 | Honor / award (label:value)          | `\item \cvHonor{award}{detail}` → renders `Award: detail` |
 | Certification item (title, issuer)   | `\item \cvHeading{title}, issuer (Mon YYYY). \href{...}{url}` |
-| Publication                          | `\item \cvHeading{title}. \textit{journal} (Mon YYYY), DOI ...` |
+| Publication (inside Honors & Awards) | `\item \cvHonor{Publication}{title. \textit{journal} (Mon YYYY). \href{...}{url}}` |
 | Inline label:value (e.g. Languages)  | `\cvHeading{Label:} value` |
+
+**Why Publications lives under Honors & Awards, not its own section.**
+With a single publication, a dedicated `\section{Publications}` costs
+one section header worth of vertical space for no extra information.
+Fold the entry into Honors & Awards with `\cvHonor{Publication}{...}`
+and keep the dedicated section only if the list grows to 3+ items.
 
 **Separator convention (no em-dash / en-dash between clauses).** AI text
 is easy to spot because of `—` or `--` used as sentence-break separator.
@@ -175,7 +189,7 @@ Real usage from the repo:
         on AWS S3.
 \end{itemize}
 
-\cvProject{MCP Servers for Cometa}{Python, Model Context Protocol, Claude, OpenAI}{https://github.com/oscargicast}
+\cvProject{Fabrimetal}{Next.js, DRF, PostgreSQL, Docker, AWS}{github.com/oscargicast/fabrimetal}
 
 \cvSkill{Python frameworks}{Django, FastAPI, Flask, Falcon, Tornado, CherryPy}
 ```
@@ -192,15 +206,29 @@ Real usage from the repo:
   block at the top of `resume.tex`).
 - **Every `\href` has visible URL text, with `https://` stripped**:
   - ✅ `\href{https://linkedin.com/in/oscargicast}{linkedin.com/in/oscargicast}`
-  - ❌ `\href{https://linkedin.com/in/oscargicast}{LinkedIn}`
-  - ❌ `\faLinkedin` + `\url{...}` in icon-only rows (FontAwesome glyphs
-    are in the Private Use Area; parsers see nothing).
+  - ✅ `{\footnotesize\faLinkedin}\ \href{https://linkedin.com/in/oscargicast}{linkedin.com/in/oscargicast}`
+    (FontAwesome icon as decoration; the visible URL is still the full
+    identifier, so ATS extracts `linkedin.com/in/oscargicast`).
+  - ❌ `\href{https://linkedin.com/in/oscargicast}{LinkedIn}` (label only)
+  - ❌ `\faLinkedin\ \href{https://linkedin.com/in/oscargicast}{}` (icon
+    with no visible text — Private Use Area glyph, parsers see nothing).
 - **Mainstream fonts only**: Latin Modern (current), TeX Gyre, Charter,
   Source Sans/Serif, IBM Plex, Inter, EB Garamond. No `fontspec` with
   display fonts.
 - **Standard section names**: Summary, Experience, Projects, Skills,
   Education, Certifications, Honors & Awards, Languages. No "My Journey"
   or similar creative headings.
+- **Left-align everything (ragged-right).** `resume.tex` calls
+  `\raggedright` right after `\begin{document}`. Do not remove it and
+  do not justify paragraphs. Reasons: (a) narrow-column justification
+  produces visible word-spacing "rivers" that hurt readability;
+  (b) every resume template in the reference set (Jake Gutierrez,
+  r/EngineeringResumes, Harvard, Stanford) is ragged-right; (c) the
+  `itemize` bullets and `\titleformat` section titles are already
+  ragged — a justified summary is visually inconsistent. The centered
+  header (`\begin{center}...\end{center}`) still works because `center`
+  sets its own margins locally. ATS is indifferent (`pdftotext`
+  ignores alignment).
 - **Color — two-tone monochromatic palette, heading-only.** `pdftotext`
   strips all color, so ATS extraction is blind to it; the real risk is
   human readability in B&W printouts and low-contrast glare on screens.
@@ -250,6 +278,12 @@ an edit needs to update any of these, update it in `resume.tex` (header
 | LinkedIn  | linkedin.com/in/oscargicast                   |
 | GitHub    | github.com/oscargicast                        |
 | Blog      | oscargicast.com                               |
+| YouTube   | youtube.com/@devosqui                         |
+
+The header in `resume.tex` prefixes each field with a `fontawesome5`
+icon (`\faMapMarker*`, `\faEnvelope`, `\faPhone*`, `\faLinkedin`,
+`\faGithub`, `\faGlobe`, `\faYoutube`) at `\footnotesize`. Visible URL
+text always accompanies the icon — never add a field as icon-only.
 
 ## Build
 
@@ -307,10 +341,9 @@ Chapatuplaza RAG, observability stack, and three verifiable certs):
   stack categories like Observability) *just* to hit 2 pages. Ask
   first if a trim is needed.
 
-The reference doc proposes `margin=0.65in` and
-`\titlespacing*{\section}{0pt}{10pt}{4pt}`. With 7+ roles and quantified
-bullets, that yields **3 pages**. The verified 2-page recipe used in this
-repo:
+With 7 roles + 4 projects + 4 certs + Publications/Honors/Languages,
+the natural page count is **3 pages**. The verified settings in
+`resume.tex` that keep content legible without overflowing to 4:
 
 | Knob                      | Value used       | Floor (don't go past) |
 |---------------------------|------------------|-----------------------|
@@ -439,7 +472,10 @@ Do not introduce any of these into `resume.tex`:
 - `\fancyhdr` / `\fancyhead` / `\fancyfoot` for any information the
   reader must keep.
 - `multicol`, `paracol`, `minipage`-based side-by-side layouts.
-- FontAwesome / Font Awesome icons without accompanying visible text.
+- FontAwesome icons as the **sole** label for any contact field (icon-only
+  rows — the glyphs live in the Unicode Private Use Area, so parsers
+  extract nothing). Icons as decoration next to the full URL / email /
+  phone text are fine and are what the current header uses.
 - Decorative `\quote{...}` at the top of the document.
 - `\photo{...}` or any `\includegraphics` for a headshot.
 - `fontspec` with display fonts lacking complete Unicode CMAP tables.

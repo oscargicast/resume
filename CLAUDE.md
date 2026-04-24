@@ -3,13 +3,19 @@
 This file provides guidance to Claude Code (claude.ai/code) when working
 with code in this repository.
 
-## Authoritative skill
+## Authoritative skills
 
-Before editing anything, read
-[`.claude/skills/ats-resume/SKILL.md`](.claude/skills/ats-resume/SKILL.md).
-It is the authoritative source for the preamble, macros, section order,
-canonical contact info, density tuning, and testing workflow. This
-CLAUDE.md is a short pointer — the skill is the full spec.
+Before editing anything, read the skill that matches what you're
+touching:
+
+- [`.claude/skills/ats-resume/SKILL.md`](.claude/skills/ats-resume/SKILL.md)
+  — authoritative for `resume.tex` and `sections/*.tex` (preamble, macros,
+  section order, canonical contact info, density tuning, testing).
+- [`.claude/skills/ats-cover-letter/SKILL.md`](.claude/skills/ats-cover-letter/SKILL.md)
+  — authoritative for `cover-letters/**` (shared preamble, one-page
+  structure, writing rules, per-company folder layout, build).
+
+This CLAUDE.md is a short pointer; each skill is the full spec.
 
 ## Project
 
@@ -39,12 +45,18 @@ sync. To force a full rebuild after edits, run `make clean && make`.
 ## Layout
 
 ```
-resume.tex                          # preamble, custom macros, header, \input list
-sections/*.tex                      # section fragments (no preamble, not standalone)
-assets/picture.jpg                  # unreferenced; no \photo is used anymore
-resume.pdf                          # committed build output (README links it)
-Makefile                            # build targets
-.claude/skills/ats-resume/SKILL.md  # authoritative editing guide
+resume.tex                               # preamble, macros, header, \input list
+sections/*.tex                           # section fragments (no preamble)
+assets/picture.jpg                       # unreferenced; no \photo is used anymore
+resume.pdf                               # committed build output (README links it)
+cover-letters/                           # per-company LaTeX cover letters
+  _common/cover-letter-preamble.tex      # shared preamble + \coverHeader
+  <company-slug>/cover-letter.tex        # per-company source
+  <company-slug>/cover-letter.pdf        # committed build output
+  <company-slug>/job-posting.md          # captured job description
+Makefile                                 # build targets (resume + cover-letters)
+.claude/skills/ats-resume/SKILL.md       # authoritative guide for resume edits
+.claude/skills/ats-cover-letter/SKILL.md # authoritative guide for cover letters
 ```
 
 `resume.tex` sets the `article` class + ATS-proof preamble

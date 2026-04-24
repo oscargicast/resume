@@ -4,6 +4,17 @@
 build/
 
 #############
+## Agent / skill tooling (machine-local, not part of the resume source)
+#############
+.agents/
+skills-lock.json
+## Ignore every .claude/skill folder EXCEPT the repo-authoritative ones
+## (ats-resume and ats-cover-letter), which we do want tracked.
+.claude/skills/*
+!.claude/skills/ats-resume/
+!.claude/skills/ats-cover-letter/
+
+#############
 ## Latex
 #############
 
