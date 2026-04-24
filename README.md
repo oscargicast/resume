@@ -1,5 +1,33 @@
-Useful Latex Template to Make a Resume
-=======================================
+Resume
+======
 
-Main file: [resume.tex](https://github.com/oskargicast/resume/blob/master/resume.tex)
-and get this cool results: [resume.pdf](https://github.com/oskargicast/resume/blob/master/resume.pdf?raw=true)
+Single-column, ATS-proof LaTeX resume built on the `article` class with
+[Jake Gutierrez's template](https://github.com/jakegut/resume) conventions.
+See [`ast-best-practices-resume.md`](ast-best-practices-resume.md) for the
+mechanics.
+
+- Main file: [resume.tex](resume.tex)
+- Sections: [sections/](sections/)
+- Output: [resume.pdf](resume.pdf?raw=true)
+
+## Build
+
+```sh
+make               # compile resume.pdf (incremental — skipped if up-to-date)
+make view          # compile and open the PDF
+make watch         # rebuild continuously on save (latexmk -pvc)
+make clean         # remove build/ artifacts (keeps committed resume.pdf)
+make distclean     # also remove resume.pdf
+make help          # list targets
+```
+
+`make` is incremental: if `resume.pdf` is newer than all sources, Make prints `Nothing to be done for 'all'` and exits. That is correct — there is nothing to rebuild. To force a full rebuild, run `make clean && make` (or `make distclean && make`).
+
+Requires a TeX Live distribution with `latexmk` and `pdflatex`. Uses standard packages only (`lmodern`, `microtype`, `geometry`, `enumitem`, `titlesec`, `tabularx`, `hyperref`, `glyphtounicode`) — no `moderncv`, no `fontspec`.
+
+## ATS verification
+
+```sh
+pdffonts resume.pdf                 # every row should show emb yes / uni yes
+pdftotext -layout resume.pdf -      # reading order must be linear, ligatures intact
+```

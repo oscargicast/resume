@@ -1,43 +1,110 @@
-\documentclass[11pt,a4paper,sans]{moderncv}
+%% ATS-proof single-column resume (pdfLaTeX).
+%% Based on Jake Gutierrez's article-class template; see ast-best-practices-resume.md.
+\documentclass[11pt,letterpaper]{article}
 
-%% ModernCV themes.
-\moderncvstyle{casual}
-\moderncvcolor{blue}
-\renewcommand{\familydefault}{\sfdefault}
-\nopagenumbers{}
-
-%% Character encoding.
+%% Encoding and language.
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
 
-%% Adjust the page margins.
-\usepackage[scale=0.75]{geometry}
+%% Fonts + ATS ligature fix (CRITICAL: makes copy-paste yield "artificial"
+%% instead of "arti cial" inside Workday/Greenhouse/Taleo/Textkernel parsers).
+\usepackage{lmodern}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = *}
+\input{glyphtounicode}
+\pdfgentounicode=1
 
-%% Personal data.
-\firstname{Oscar}
-\familyname{Giraldo Castillo}
-\title{Mechatronics Engineering Graduate}
-\address{Av. Brasil 805 Dpto. 401}{Jesús María, Lima, Perú}
-\mobile{011 51 984 287 311}
-\phone{011 51 1 433 5920}
-\email{oscar@dgnest.com / oscar.gi.cast@gmail.com}
-\homepage{dgnest.com/oskargicast}
-\extrainfo{http://www.linkedin.com/in/oscargicast}
-\photo[72pt][0.4pt]{picture.jpg}
-\quote{“Education is the most powerful weapon which you can use to change the world”}
+%% --- Color palette --------------------------------------------------------
+%% Two heading-only colors. Color has ZERO ATS impact — pdftotext ignores it.
+%% `titleStrong` → hero name, section titles, section rule.
+%% `titleMid`    → role, project, skill, honor titles (via \cvHeading).
+%% Body text, bullets, dates, locations stay black.
+\usepackage{xcolor}
+\definecolor{titleStrong}{HTML}{3B4BDF}
+\definecolor{titleMid}{HTML}{000640}
+
+%% Geometry and list spacing.
+\usepackage[margin=0.45in]{geometry}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*, topsep=0pt, itemsep=0pt,
+                  parsep=0pt, label=\textbullet}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+%% Section formatting (real \section so PDF bookmarks survive).
+\usepackage{titlesec}
+\titleformat{\section}
+  {\large\bfseries\raggedright\color{titleStrong}}{}{0em}{}[{\color{titleStrong}\titlerule}]
+\titlespacing*{\section}{0pt}{6pt}{4pt}
+\setcounter{secnumdepth}{0}
+
+\usepackage{tabularx}
+
+%% hyperref LAST, with metadata some ATS and recruiters read.
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Oscar Giraldo Castillo - Senior Full-Stack Engineer Resume},
+  pdfauthor={Oscar Giraldo Castillo},
+  pdfsubject={Senior Backend Software Engineer},
+  pdfkeywords={Python, Django, FastAPI, PostgreSQL, Redis, AWS, Kubernetes,
+               Docker, distributed systems, microservices, MCP,
+               Model Context Protocol, LLM tooling, backend, event-driven,
+               Go, TypeScript, data engineering},
+  colorlinks=false, pdfborder={0 0 0}
+}
+\urlstyle{same}
+\pdfminorversion=7
+
+%% --- Custom macros ---------------------------------------------------------
+%% Presentation components (reused by content macros and section files).
+%% \cvHeading{text}  — bold + titleMid color, used for any sub-title.
+%% \cvNote{text}     — free-text line under a \cvEntry (activities, narrative).
+%% \cvHonor{t}{d}    — colored title + detail, for honors/certifications items.
+\newcommand{\cvHeading}[1]{\textbf{\textcolor{titleMid}{#1}}}
+\newcommand{\cvNote}[1]{\noindent #1\par\vspace{2pt}}
+\newcommand{\cvHonor}[2]{\cvHeading{#1} -- #2}
+
+%% \cvEntry{Title}{Dates}{Org}{Location}
+\newcommand{\cvEntry}[4]{%
+  \noindent\cvHeading{#1}\hfill #2 \\
+  \textit{#3}\hfill \textit{#4}\par\vspace{2pt}%
+}
+
+%% \cvProject{Name}{Stack}{URL}
+\newcommand{\cvProject}[3]{%
+  \noindent\cvHeading{#1} \textbar\ \textit{#2}%
+  \ifx&#3&\else\hfill\href{#3}{#3}\fi
+  \par\vspace{2pt}%
+}
+
+%% \cvSkill{Category}{Comma-separated list}
+\newcommand{\cvSkill}[2]{%
+  \noindent\cvHeading{#1:} #2\par\vspace{1pt}%
+}
 
 \begin{document}
-\makecvtitle
 
-\input{./education.tex}
-\input{./skills.tex}
-\input{./certifications.tex}
-\input{./experience.tex}
-\input{./references.tex}
-\input{./volunteer-experience.tex}
-\input{./projects.tex}
-\input{./organizations.tex}
-\input{./courses.tex}
-\input{./honors-awards.tex}
-\input{./languages.tex}
+%% --- Header (body text, NOT \fancyhdr — Workday strips page headers) -------
+\begin{center}
+  {\Huge\bfseries\color{titleStrong} Oscar Giraldo Castillo}\\[2pt]
+  {\large Senior Full-Stack Engineer}\\[4pt]
+  Lima, Perú (remote) \textbar\
+  \href{mailto:oscar.gi.cast@gmail.com}{oscar.gi.cast@gmail.com} \textbar\
+  +51 907 898 162 \\
+  \href{https://linkedin.com/in/oscargicast}{linkedin.com/in/oscargicast} \textbar\
+  \href{https://github.com/oscargicast}{github.com/oscargicast} \textbar\
+  \href{https://oscargicast.com}{oscargicast.com}
+\end{center}
+
+\input{./sections/summary.tex}
+\input{./sections/experience.tex}
+\input{./sections/projects.tex}
+\input{./sections/skills.tex}
+\input{./sections/education.tex}
+\input{./sections/certifications.tex}
+\input{./sections/publications.tex}
+\input{./sections/honors-awards.tex}
+\input{./sections/languages.tex}
 
 \end{document}

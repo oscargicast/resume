@@ -1,0 +1,18 @@
+\section{Projects}
+
+\cvProject{MCP Servers for Cometa}{Python, Model Context Protocol, Claude, OpenAI}{}
+\begin{itemize}
+  \item Open-source and internal MCP server implementations exposing Cometa
+        domain APIs (payments, admissions, communications) as LLM-callable
+        tools for AI developer tooling.
+\end{itemize}
+
+\cvProject{Chapatuplaza MCQ generator}{Python, LangChain, Gemini 2.5, Claude, Qdrant, AWS Lambda, SQS}{}
+\begin{itemize}
+  \item Event-driven RAG for Peruvian medical-exam prep (SERUMS/MINSA): vision-based PDF OCR and image-embedding retrieval on Qdrant; multi-provider LLM generation (Gemini with Claude fallback) on AWS Lambda, with async SQS callbacks (DLQ-backed) for persistence and Langfuse observability.
+\end{itemize}
+
+\cvProject{Cometag NFC reader firmware}{C, ESP-IDF, XIAO ESP32-S3, PN532, I2C}{}
+\begin{itemize}
+  \item Embedded firmware for a XIAO ESP32-S3 driving a PN532 NFC reader over I2C; detects ISO14443A tags (MIFARE, NTAG) and streams UIDs over serial USB to prototype NFC workflows at Cometa.
+\end{itemize}
