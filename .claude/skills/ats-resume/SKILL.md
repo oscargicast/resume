@@ -11,10 +11,7 @@ description: >
 
 # ats-resume
 
-Authoritative guide for editing the resume in **this** repo
-(`/Users/oscar/Projects/resume`) without breaking ATS compatibility. Combines
-generic ATS-proof LaTeX rules with the repo's build system and canonical
-data. When this skill and `CLAUDE.md` disagree, this skill wins.
+Authoritative guide for editing the resume in **this** repo without breaking ATS compatibility. Combines generic ATS-proof LaTeX rules with the repo's build system and canonical data. When this skill and `CLAUDE.md` disagree, this skill wins.
 
 ## The one-line ATS fix nobody explains
 

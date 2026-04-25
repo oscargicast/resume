@@ -1,10 +1,8 @@
 Resume
 ======
 
-Single-column, ATS-proof LaTeX resume built on the `article` class with
-[Jake Gutierrez's template](https://github.com/jakegut/resume) conventions.
-See [`.claude/skills/ats-resume/SKILL.md`](.claude/skills/ats-resume/SKILL.md)
-for the authoritative editing guide.
+Single-column, ATS-proof LaTeX resume built on the `article` class.
+See [`.claude/skills/ats-resume/SKILL.md`](.claude/skills/ats-resume/SKILL.md) for the authoritative editing guide.
 
 - Main file: [resume.tex](resume.tex)
 - Sections: [sections/](sections/)
